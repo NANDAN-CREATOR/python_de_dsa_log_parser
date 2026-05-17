@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Generate 1M log lines",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "log_parser.cli",
+      "args": ["gen", "--lines", "1000000", "--output", "logs/app.log"],
+      "env": { "PYTHONPATH": "${workspaceFolder}" },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Search log file",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "log_parser.cli",
+      "args": ["search", "--file", "logs/app.log", "--prefix", "ERROR.database"],
+      "env": { "PYTHONPATH": "${workspaceFolder}" },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Benchmark 500k lines",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "log_parser.benchmark",
+      "args": ["--lines", "500000", "--detailed"],
+      "env": { "PYTHONPATH": "${workspaceFolder}" },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run All Tests",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["tests/", "-v"],
+      "env": { "PYTHONPATH": "${workspaceFolder}" },
+      "console": "integratedTerminal"
+    }
+  ]
+}
